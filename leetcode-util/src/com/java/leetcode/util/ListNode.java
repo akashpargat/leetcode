@@ -2,8 +2,8 @@ package com.java.leetcode.util;
 
 public class ListNode
 {
-    int val;
-    ListNode next;
+    public int val;
+    public ListNode next;
 
     /**
      * @param x
