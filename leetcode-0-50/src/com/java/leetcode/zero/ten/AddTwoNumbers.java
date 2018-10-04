@@ -14,11 +14,12 @@ public class AddTwoNumbers
     @SuppressWarnings("javadoc")
     public static ListNode addTwoNumbers(ListNode l1, ListNode l2)
     {
-        ListNode newNode = new ListNode(0);
+        ListNode head = new ListNode(0);
+        ListNode newNode = head;
         int num1 = 0;
         int num2 = 0;
         int carry = 0;
-        while (l1.next != null && l2.next != null)
+        while (l1 != null && l2 != null)
         {
             int sum = l1.val + l2.val;
             if (sum < 10)
@@ -29,7 +30,6 @@ public class AddTwoNumbers
             {
                 newNode.next = new ListNode(sum + 1);
                 carry = 0;
-
             }
             else if (sum > 10 && carry == 1)
             {
@@ -42,14 +42,25 @@ public class AddTwoNumbers
             }
             l1 = l1.next;
             l2 = l2.next;
+            newNode = newNode.next;
         }
-        if (l1.next != null)
+        if (l1 != null)
         {
-
+            while (l1.next != null)
+            {
+                newNode.next = new ListNode(l1.val + carry);
+                l1 = l1.next;
+                carry = 0;
+            }
         }
-        if (l2.next != null)
+        if (l2 != null)
         {
-
+            while (l2.next != null)
+            {
+                newNode.next = new ListNode(l2.val + carry);
+                l2 = l2.next;
+                carry = 0;
+            }
         }
         return helper();
     }
